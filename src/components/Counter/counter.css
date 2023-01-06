@@ -1,0 +1,81 @@
+.counter {
+  display: grid;
+  grid-template-columns: repeat(3, 4rem);
+  grid-template-rows: repeat(2, auto);
+  margin: 20px auto 0 auto;
+  background-color: white;
+  width: calc(3 * 4rem);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 12px -3px rgba(0, 0, 0, 0.49);
+}
+
+.counter .btn-decrease {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.counter .btn-increase {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.counter .btn {
+  background-color: #0089ff;
+  cursor: pointer;
+}
+
+.counter .btn:disabled {
+  background-color: #8b8b8b;
+  cursor: auto;
+}
+
+.counter .btn-increase,
+.counter .btn-decrease {
+  font-size: 2rem;
+  color: white;
+  width: 4rem;
+  border: none;
+}
+
+.counter .btn-min,
+.counter .btn-max {
+  grid-row: 2;
+  width: 4rem;
+  border: 0;
+  border-radius: 20px;
+  margin-top: 10px;
+  color: white;
+  padding: 5px;
+}
+
+.counter .btn-decrease,
+.counter .btn-min {
+  grid-column: 1;
+  justify-self: end;
+}
+
+.counter .btn-min {
+  background-color: #5900ff;
+}
+
+.counter .btn-max {
+  background-color: #ff006f;
+}
+
+.counter .btn-increase,
+.counter .btn-max {
+  grid-column: 3;
+  justify-self: start;
+}
+
+.counter .counter-value {
+  grid-column: 2;
+  grid-row: 1;
+  background-color: #0e87ff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
