@@ -111,6 +111,7 @@ const App = () => {
   const [count, setCount] = useState(null);
   const [selected, setSelected] = useState(null);
   const [checked, setChecked] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   return (
     <div className='flex-center'>
       <input type='checkbox' checked={checked} onChange={() => setChecked(!checked)} />
@@ -122,7 +123,8 @@ const App = () => {
           <h1 style={{ textAlign: 'center' }}>Selected: {selected}</h1>
         </>
       )}
-      <SearchField options={options} />
+      <SearchField options={options} onChange={setSearchTerm} />
+      <h1 style={{ textAlign: 'center' }}>Searched: {searchTerm}</h1>
     </div>
   );
 };

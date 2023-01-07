@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import './searchfield.css';
 
-const SearchFiled = ({ options = [] }) => {
+const SearchFiled = ({ options = [], onChange = () => {} }) => {
   // amire rá keresünk
   const [searchTerm, setSearchTerm] = useState('');
   // az a ténylegesen létező elem amit kiválasztunk
@@ -14,6 +14,10 @@ const SearchFiled = ({ options = [] }) => {
   const handleOutsideClick = (event) => {
     if (!container.current?.contains(event.target)) setOpened(false);
   };
+
+  useEffect(() => {
+    onChange(selectedItem);
+  }, [selectedItem]);
 
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick);
