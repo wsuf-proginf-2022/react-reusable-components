@@ -113,11 +113,15 @@ const App = () => {
   const [checked, setChecked] = useState(false);
   return (
     <div className='flex-center'>
-      <Counter max={15} onChange={setCount} />
-      <h1 style={{ textAlign: 'center' }}>Count: {count}</h1>
       <input type='checkbox' checked={checked} onChange={() => setChecked(!checked)} />
-      {checked && <Dropdown options={dropdownOptions} onChange={setSelected} />}
-      <h1 style={{ textAlign: 'center' }}>Selected: {selected}</h1>
+      {checked && (
+        <>
+          <Dropdown options={dropdownOptions} onChange={setSelected} />
+          <Counter max={15} onChange={setCount} />
+          <h1 style={{ textAlign: 'center' }}>Count: {count}</h1>
+          <h1 style={{ textAlign: 'center' }}>Selected: {selected}</h1>
+        </>
+      )}
       <SearchField options={options} />
     </div>
   );
@@ -126,8 +130,4 @@ const App = () => {
 // https://reactjs.org/docs/strict-mode.html
 const container = document.getElementById('root');
 const root = createRoot(container);
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+root.render(<App />);
