@@ -1,17 +1,21 @@
 import { useState, useRef, useEffect } from 'react';
 import './dropdown.css';
 
-const Dropdown = ({ options = [] }) => {
+const Dropdown = ({ options = [], onChange = () => {} }) => {
   const [selected, setSelected] = useState(options[0]);
   const [opened, setOpened] = useState(false);
   const container = useRef();
 
   const handleOutsideClick = (event) => {
-    if (!container.current.contains(event.target)) setOpened(false);
+    if (!container.current?.contains(event.target)) setOpened(false);
+    console.log('clicked');
   };
 
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick);
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
   }, []);
 
   return (
@@ -34,6 +38,7 @@ const Dropdown = ({ options = [] }) => {
                 key={option}
                 onClick={() => {
                   setSelected(option);
+                  onChange(option);
                   setOpened(false);
                 }}>
                 {option}

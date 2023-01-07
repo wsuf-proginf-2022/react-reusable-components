@@ -108,12 +108,15 @@ const options = [
 
 const App = () => {
   const [count, setCount] = useState(null);
+  const [selected, setSelected] = useState(null);
+  const [checked, setChecked] = useState(false);
   return (
     <div className='flex-center'>
-      <h1 style={{ textAlign: 'center' }}>Rendered</h1>
       <Counter max={15} onChange={setCount} />
       <h1 style={{ textAlign: 'center' }}>Count: {count}</h1>
-      <Dropdown options={dropdownOptions} />
+      <input type='checkbox' checked={checked} onChange={() => setChecked(!checked)} />
+      {checked && <Dropdown options={dropdownOptions} onChange={setSelected} />}
+      <h1 style={{ textAlign: 'center' }}>Selected: {selected}</h1>
     </div>
   );
 };
