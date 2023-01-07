@@ -1,8 +1,10 @@
 import { createRoot } from 'react-dom/client';
 import React, { StrictMode, useState } from 'react';
-import Counter from './components/Counter/Counter';
+// import Counter from './components/Counter/Counter';
+import Counter from './components/Counter/CounterClass';
 import Dropdown from './components/Dropdown/Dropdown';
-import SearchField from './components/SearchField/SearchField';
+// import SearchField from './components/SearchField/SearchField';
+import SearchField from './components/SearchField/SearchFieldClass';
 
 const dropdownOptions = [
   'apple',
