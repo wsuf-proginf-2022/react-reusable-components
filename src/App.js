@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client';
 import React, { StrictMode, useState } from 'react';
 import Counter from './components/Counter/Counter';
 import Dropdown from './components/Dropdown/Dropdown';
+import SearchField from './components/SearchField/SearchField';
 
 const dropdownOptions = [
   'apple',
@@ -117,6 +118,7 @@ const App = () => {
       <input type='checkbox' checked={checked} onChange={() => setChecked(!checked)} />
       {checked && <Dropdown options={dropdownOptions} onChange={setSelected} />}
       <h1 style={{ textAlign: 'center' }}>Selected: {selected}</h1>
+      <SearchField options={options} />
     </div>
   );
 };
