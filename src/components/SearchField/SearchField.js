@@ -23,6 +23,12 @@ const SearchFiled = ({ options = [] }) => {
   }, []);
 
   useEffect(() => {
+    if (cursorIndex === -1) return;
+    const el = document.querySelector('.search-field .hover');
+    if (el) el.scrollIntoView({ block: 'nearest' });
+  }, [cursorIndex]);
+
+  useEffect(() => {
     console.log('searchTerm: ', searchTerm);
     const results = options.filter((option) => option.includes(searchTerm.toLowerCase()));
     setSearchResults(results);
