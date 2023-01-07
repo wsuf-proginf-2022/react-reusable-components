@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client';
-import React, { StrictMode } from 'react';
+import React, { StrictMode, useState } from 'react';
 import Counter from './components/Counter/Counter';
+import Dropdown from './components/Dropdown/Dropdown';
 
 const dropdownOptions = [
   'apple',
@@ -106,10 +107,13 @@ const options = [
 ];
 
 const App = () => {
+  const [count, setCount] = useState(null);
   return (
     <div className='flex-center'>
       <h1 style={{ textAlign: 'center' }}>Rendered</h1>
-      <Counter max={15} />
+      <Counter max={15} onChange={setCount} />
+      <h1 style={{ textAlign: 'center' }}>Count: {count}</h1>
+      <Dropdown options={dropdownOptions} />
     </div>
   );
 };

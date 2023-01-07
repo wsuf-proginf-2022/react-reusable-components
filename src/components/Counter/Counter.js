@@ -1,12 +1,12 @@
 import './counter.css';
 import React, { useState } from 'react';
 
-const Counter = ({ max }) => {
+const Counter = ({ max = 10, min = 0, onChange = () => {} }) => {
   // const state = useState(0);
   // const number = state[0];
   // const setNumber = state[1];
   // array destructuring
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState(min);
 
   // object destructuring
   // const a = { name: 'a' };
@@ -14,10 +14,12 @@ const Counter = ({ max }) => {
 
   const increment = () => {
     setNumber(number + 1);
+    onChange(number + 1);
   };
 
   const set = (val) => () => {
     setNumber(val);
+    onChange(val);
   };
 
   return (
@@ -25,15 +27,17 @@ const Counter = ({ max }) => {
       <button
         className='btn btn-small btn-min'
         onClick={() => {
-          setNumber(0);
+          setNumber(min);
+          onChange(min);
         }}>
         Min
       </button>
       <button
         className='btn btn-big btn-decrease'
-        disabled={number === 0}
+        disabled={number === min}
         onClick={() => {
           setNumber(number - 1);
+          onChange(number - 1);
         }}>
         &lt;
       </button>
